@@ -1,0 +1,73 @@
+.footer {
+    bottom: 30px;
+    width: 100%;
+    position: fixed;
+    padding: 0px 90px;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.instagramIcon {
+    font-size: 22px;
+}
+
+.footer a {
+    font-weight: 100;
+}
+
+.footer b {
+    font-weight: 400;
+}
+
+.sign {
+    position: relative;
+    cursor: pointer;
+
+    i {
+        opacity: 0;
+        margin-left: 5px;
+        color: rgb(240, 58, 26);
+    }
+
+    &:hover i {
+        opacity: 1;
+        animation: pulse 900ms ease-out infinite;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1)
+    }
+
+    20% {
+        transform: scale(1)
+    }
+
+    40% {
+        transform: scale(1.2)
+    }
+
+    60% {
+        transform: scale(1)
+    }
+
+    80% {
+        transform: scale(1.4)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+@media (max-width: 1024px) {
+    .footer {
+        bottom: 6px;
+        padding: 0px 25px;
+    }
+}

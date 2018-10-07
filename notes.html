@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
+    <title>Project's notes</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="container my-5">
+
+            <h2>Setup inicial</h2>
+            <h4>1) Instalar las siguentes dependencias con npm:</h4>
+            <code>
+                "devDependencies": {
+                    "html-webpack-plugin": "^3.2.0", "webpack": "^4.5.0", "webpack-cli": "^2.0.14"
+                }
+            </code>
+            <br />
+            <br />
+
+            <h4>2) crear el fichero webpack.config.js</h4>
+            <p>
+                Indicar el "entry", "output" y "plugins" principales. HtmlWebpackPlugin, ExtractTextPlugin (extrae los css generados los
+                los loaders de sass y crea un archivo css que se incluirá luego en el template)
+            </p>
+            <p>
+                Luego crear los "Loaders" dentro de "rules". style-loader, css-loader, scc-loader.
+                <blockquote>
+                    <a href="https://webpack.js.org/guides/migrating/#extracttextplugin-extract" target="_blank">ExtractTextPlugin docs</a>
+                </blockquote>
+            </p>
+            <code>
+                rules: [ { test: /\.scss$/, use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'sass-loader'],
+                publicPath: './dist' }) } ]
+            </code>
+            <br />
+            <br />
+
+            <h4>3) instalar y configurar "webpack-dev-server"</h4>
+            <p>
+                Cambiar el script en package.json de: <code>{"dev": "webpack -d --watch"}</code>, a: <code>{"dev": "webpack-dev-server -d"}</code>
+            </p>
+            <br />
+
+            <h4>4) Configurar el "file-loader"</h4>
+            <p>
+                Para poder utilizar imágenes en los componentes, html y css de debe confgurar el "file-loader" dentro de modules -> rules:
+            </p>
+            
+            <code>
+                 { test: /\.(jpe?g|png|gif|svg)$/i, use: [ { loader: 'file-loader', options: { name: '[name].[ext]', outputPath: 'img/', publicPath: 'img/' } } ] }
+            </code><br /><br />
+
+            <blockquote>
+                <a href="https://www.npmjs.com/package/file-loader" target="_blank">File-loader docs</a>
+            </blockquote>
+            <br />
+
+            <h4>5) Configuración de DevServer con Webpack</h4>
+            <p>
+                
+            </p>
+
+            <blockquote>
+                <a href="https://webpack.js.org/configuration/dev-server/" target="_blank">DevServer config</a>
+            </blockquote>
+            <br />
+            
+
+            <h4>6) Instalar React y Babel</h4>
+            <p>
+                Primero instalar el loader para babel. Luego de instalar el resto de las dependencias, se debe crear un archivo ".babelrc" en la raíz:
+            </p>
+            <code>
+                 { "presets": ["es2015", "react"] }
+            </code>
+            <br /><br />
+            <p>
+                <b>React:</b> Correr <code>npm i -S react react-dom</code><br />
+                <b>Babel Loaders:</b> Correr <code>npm i --D babel-loader babel-core</code><br />
+                <b>Babel:</b> Correr <code>npm i -D babel-preset-env babel-preset-react</code>
+            </p>
+            
+            <blockquote>
+                <a href="https://reactjs.org/docs/add-react-to-an-existing-app.html" target="_blank">Instalar React docs</a><br />
+                <a href="https://babeljs.io/docs/setup/#installation" target="_blank">Instalar Loaders de Babel</a><br />
+                <a href="https://www.youtube.com/watch?v=zhA5LNA3MxE&index=6&list=PLkEZWD8wbltnRp6nRR8kv97RbpcUdNawY" target="_blank">Instalar React (i Hate Tomatos - youtube)</a>
+            </blockquote>
+            <br />
+            <br />
+
+        </div>
+    </div>
+
+</body>
+
+</html>
